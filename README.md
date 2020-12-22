@@ -9,6 +9,4 @@ firefox ./index.html
 
 You can calculate biorhythm on the page:
 
-https://github.com/cmsrs/biorhythm
-
-
+http://www.cmsrs.pl/en/cms/projects/biorhythm
