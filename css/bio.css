@@ -1,0 +1,48 @@
+body
+{
+    font:  Verdana, Arial, Helvetica, sans-serif;
+    color: #050505;
+}
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+header{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+header a#logo_game{
+    text-decoration:none;
+    font-weight: bold;
+    float: left;
+    font-family : Ubuntu;
+    font-size: 18px;
+}
+header a#logo_game span.cms{
+    color: #b1ccdd;
+}
+header a#logo_game span.rs{
+    color: #ff5050;
+}
+h1#title{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+}
+.info{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.info_bold{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#result{
+    margin-top: 15px;
+}
