@@ -19,7 +19,10 @@ display = (function() {
           'yyyy2' : parseInt(document.getElementById('yyyy2').value)
         };
 
+        localStorage.setItem('bio_date_in',  JSON.stringify(dataIn));
+
         var dataOut = logic.getResult(dataIn);
+        //console.log(dataOut);
 
         var result = document.getElementById('result');
         result.innerHTML = '';
@@ -63,6 +66,8 @@ display = (function() {
         var months = [];
         var years = [];
 
+        var bioDateIn = JSON.parse(localStorage.getItem('bio_date_in'));
+
         var dd = document.getElementById('dd');
         var dd2 = document.getElementById('dd2');
 
@@ -73,19 +78,19 @@ display = (function() {
         var yyyy2 = document.getElementById('yyyy2');
 
         for (var i = 1; i <= 31; i++) {
-            dd.options[dd.options.length] = new Option(i, i);
-            dd2.options[dd2.options.length] = new Option(i, i);
+            dd.options[dd.options.length] = new Option(i, i, true, (( bioDateIn && (bioDateIn.dd === i) ) ? true : false));
+            dd2.options[dd2.options.length] = new Option(i, i, true, (( bioDateIn && (bioDateIn.dd2 === i) ) ? true : false));
 
             if (i <= 12) {
-              mm.options[mm.options.length] = new Option(i, i);
-              mm2.options[mm2.options.length] = new Option(i, i);
+              mm.options[mm.options.length] = new Option(i, i, true, (( bioDateIn && (bioDateIn.mm === i) ) ? true : false));
+              mm2.options[mm2.options.length] = new Option(i, i, true, (( bioDateIn && (bioDateIn.mm2 === i) ) ? true : false));
             }
         }
 
         var yearStart = (new Date()).getFullYear();
-        for (var y = yearStart; y >= 1920; y--) {
-          yyyy.options[yyyy.options.length] = new Option(y, y);
-          yyyy2.options[yyyy2.options.length] = new Option(y, y);
+        for (var ii = yearStart; ii >= 1920; ii--) {
+          yyyy.options[yyyy.options.length] = new Option(ii, ii, true, (( bioDateIn && (bioDateIn.yyyy === ii) ) ? true : false) );
+          yyyy2.options[yyyy2.options.length] = new Option(ii, ii, true, (( bioDateIn && (bioDateIn.yyyy2 === ii) ) ? true : false) );
         }
     }
 

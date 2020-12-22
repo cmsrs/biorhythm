@@ -20,7 +20,7 @@ logic = (function() {
         );
 
         // hours  minutes  seconds  milliseconds
-        var firstDaysOfLive = Math.round(Math.abs(firstDate.getTime() / (24 * 60 * 60 * 1000)));
+        var firstDaysOfLive = Math.round(Math.abs( firstDate.getTime() - (new Date()).getTime() ) / (24 * 60 * 60 * 1000));
         var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (24 * 60 * 60 * 1000)));
         var compatibilityPhysical = Math.round(100 * Math.abs(Math.cos(Math.PI * diffDays / 23)));
         var compatibilityEmotional = Math.round(100 * Math.abs(Math.cos(Math.PI * diffDays / 28)));
