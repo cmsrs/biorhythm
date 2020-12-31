@@ -1,14 +1,14 @@
 var conf = {
-    lang : 'en',
+    lang : 'pl',
     text : {
         pl : {
             title : 'Biorytm',
             your_date: 'Podaj swoją datę urodzin',
-            friend_date: 'Podaj datę urodzin innej osoby',
+            friend_date: 'Podaj datę urodzin innej osoby (opcjonalne)',
             calculate: 'Oblicz',
 
-            strYourBiorhythm : 'Twój biorytm',
-            yourDaysOfLive : 'Dni jakie przeżyłeś',
+            strYourBiorhythm : 'Twój biorytm na dziś',
+            yourDaysOfLive : 'Dni jakie przeżyłeś/aś',
             yourPhysical : 'Biorytm fizyczny',
             yourEmotional : 'Biorytm emocjonalny',
             yourIntellectual : 'Biorytm intelektualny',
@@ -24,10 +24,10 @@ var conf = {
         en : {
             title : 'Biorhythm',
             your_date: 'Enter your date of birth',
-            friend_date: 'Enter someone birthday',
+            friend_date: 'Enter someone birthday (optional)',
             calculate: 'Calculate',
 
-            strYourBiorhythm : 'Your biorhythm',
+            strYourBiorhythm : 'Your biorhythm for today',
             yourDaysOfLive: 'Days you have lived',
             yourPhysical: 'Physical biorhythm',
             yourEmotional: 'Emotional biorhythm',

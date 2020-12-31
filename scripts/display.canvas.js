@@ -28,11 +28,11 @@ display = (function() {
         result.innerHTML = '';
 
         for (const prop in dataOut) {
-            var pocent = (( prop === 'yourDaysOfLive' ) || ( prop === 'diffDays' )) ? '' : '%';
+            //var pocent = (( prop === 'yourDaysOfLive' ) || ( prop === 'diffDays' )) ? '' : '%';
             var iDiv = document.createElement('div');
             iDiv.id = prop;
             iDiv.className = 'info';
-            iDiv.textContent = conf.text[conf.lang][prop] + ' : ' + dataOut[prop] + pocent;
+            iDiv.textContent = conf.text[conf.lang][prop] + ' : ' + dataOut[prop]; // + pocent;
             result.appendChild(iDiv);
 
             if(prop === 'yourDaysOfLive'){
