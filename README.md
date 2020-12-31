@@ -1,4 +1,4 @@
-# biorhythm
+# Biorhythm
 
 A simple app to calculate the biorhythm and test partner compatibility. 
 
