@@ -7,6 +7,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link href="css/fontfaces.css" media="screen" rel="stylesheet" type="text/css" >
     <link href="css/bio.css" media="screen" rel="stylesheet" type="text/css" >
+    <style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
 </head>
 <body>
     <header class="clearfix">
@@ -39,10 +46,17 @@
 
     </div>
     <div id="result"></div>
+    <br>
 
+    <div style="width:75%;">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="lib/Chart.js"></script>
+    <script src="lib/utils.js"></script>
     <script src="scripts/loader.js"></script>
     <script src="scripts/bio.logic.js"></script>
-    <script src="scripts/display.canvas.js"></script>
+    <script src="scripts/display.js"></script>
 
 </body>
 </html>

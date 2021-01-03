@@ -42,6 +42,9 @@ var conf = {
             compatibilityAverage: 'Partner compatibility (average)'
         }
     },
+    action :{
+        no : 16
+    }
 };
 
 window.addEventListener("load", function() {

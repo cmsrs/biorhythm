@@ -48,6 +48,89 @@ display = (function() {
                 result.appendChild(descDiv2);
             }
         }
+
+        var dataChart = logic.getDateToChart(dataIn);
+        drawChart(dataChart);
+    }
+
+    function drawChart(dataChart) {
+        //console.log(dataChart);
+        var dataE = [];
+        var dataI = [];
+        var dataP = [];
+        var labels = [];
+
+        for (const i in  dataChart){
+          dataE.push( dataChart[i].emotional);
+          dataI.push( dataChart[i].intellectual);
+          dataP.push( dataChart[i].physical);
+          labels.push( dataChart[i].formatDate);
+        }
+
+
+        var config = {
+    			type: 'line',
+    			data: {
+    				labels: labels,
+    				datasets: [{
+    					label: 'Emotional',
+    					backgroundColor: window.chartColors.red,
+    					borderColor: window.chartColors.red,
+    					data: dataE,
+    					fill: false,
+    				}, {
+    					label: 'Intellectual',
+    					backgroundColor: window.chartColors.blue,
+    					borderColor: window.chartColors.blue,
+    					data: dataI,
+    					fill: false,
+            }, {
+    					label: 'Physical',
+    					backgroundColor: window.chartColors.green,
+    					borderColor: window.chartColors.green,
+    					data: dataP,
+    					fill: false,
+
+    				}]
+    			},
+    			options: {
+    				responsive: true,
+    				plugins: {
+    					title: {
+    						display: true,
+    						text: 'Chart.js Line Chart'
+    					},
+    					tooltip: {
+    						mode: 'index',
+    						intersect: false,
+    					}
+    				},
+    				hover: {
+    					mode: 'nearest',
+    					intersect: true
+    				},
+    				scales: {
+    					x: {
+    						display: true,
+    						scaleLabel: {
+    							display: true,
+    							labelString: 'Month'
+    						}
+    					},
+    					y: {
+    						display: true,
+    						scaleLabel: {
+    							display: true,
+    							labelString: 'Value'
+    						}
+    					}
+    				}
+    			}
+    		};
+
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+
     }
 
     function setup( conf ) {
