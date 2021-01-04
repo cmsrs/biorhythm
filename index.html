@@ -7,6 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link href="css/fontfaces.css" media="screen" rel="stylesheet" type="text/css" >
     <link href="css/bio.css" media="screen" rel="stylesheet" type="text/css" >
+    <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" >
     <style>
     canvas{
         -moz-user-select: none;
@@ -16,11 +17,11 @@
     </style>
 </head>
 <body>
-    <header class="clearfix">
+    <header class="clearfix container">
         <a href="http://www.cmsrs.pl" id="logo_game"><span class="cms">cms</span><span class="rs">RS</span></a><h1 id="title">Biorhythm</h1>
     </header>
     <div id="msg"></div>
-    <div id="bio">
+    <div id="bio" class="container">
       <form class="dates" id="date_inputs">
           <br>
           <div class="info" id="your_date"></div>
@@ -43,12 +44,28 @@
 
           <br>
           <input id="submit" type="submit" value="Submit">
-
+      </form>
     </div>
-    <div id="result"></div>
+
     <br>
 
-    <div style="width:75%;">
+    <div  class="container">
+      <div class="row">
+        <div class="col-sm" id="resultGeneric">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm" id="resultBio">
+        </div>
+        <div class="col-sm" id="resultCompatibility" >
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div  class="container" style="width:100%;">
         <canvas id="canvas"></canvas>
     </div>
 

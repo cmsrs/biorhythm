@@ -1,11 +1,15 @@
 var conf = {
-    lang : 'pl',
+    lang : 'en',
     text : {
         pl : {
             title : 'Biorytm',
             your_date: 'Podaj swoją datę urodzin',
             friend_date: 'Podaj datę urodzin innej osoby (opcjonalne)',
             calculate: 'Oblicz',
+
+            // chartPhysical : 'Fizyczne',
+            // chartEmotional : 'Emocjonalne',
+            // chartIntellectual : 'Intelektualne',
 
             strYourBiorhythm : 'Twój biorytm na dziś',
             yourDaysOfLive : 'Dni jakie przeżyłeś/aś',
@@ -26,6 +30,10 @@ var conf = {
             your_date: 'Enter your date of birth',
             friend_date: 'Enter someone birthday (optional)',
             calculate: 'Calculate',
+
+            // chartPhysical : 'Physical',
+            // chartEmotional : 'Emotional',
+            // chartIntellectual : 'Intellectual',
 
             strYourBiorhythm : 'Your biorhythm for today',
             yourDaysOfLive: 'Days you have lived',

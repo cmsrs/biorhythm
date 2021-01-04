@@ -53,8 +53,9 @@ logic = (function() {
         //console.log(daysOfLiveIn);
         //console.log(bio);
 
+        var formatDate = formatDateIn(d);
         var values = {
-          'formatDate' : formatDateIn(d),
+          'formatDate' : (i === 0) ?  '---'+formatDate+'---' : formatDate,
           'physical' : Math.round(bio.physical * 100),
           'emotional' : Math.round(bio.emotional * 100),
           'intellectual' : Math.round(bio.intellectual * 100)
@@ -98,24 +99,30 @@ logic = (function() {
         var intellectualTomorrow = Math.sin(2 * Math.PI * (firstDaysOfLive + 1) /33);
         var averageTomorrow = (physicalTomorrow + emotionalTomorrow + intellectualTomorrow) / 3;
 
-        var physicalSign =  ((physicalTomorrow - physical) < 0) ? '-' : '+';
-        var emotionalSign = ((emotionalTomorrow - emotional) < 0)  ? '-' : '+';
-        var intellectualSign = ((intellectualTomorrow - intellectual) < 0)  ? '-' : '+';
-        var averageSign = ((averageTomorrow - average) < 0 ) ? '-' : '+';
+        var physicalSign =  Math.sign(physicalTomorrow - physical);
+        var emotionalSign = Math.sign(emotionalTomorrow - emotional);
+        var intellectualSign = Math.sign(intellectualTomorrow - intellectual);
+        var averageSign = Math.sign(averageTomorrow - average);
 
         //console.log("p="+physical+"  e="+emotional+" i="+intellectual);
 
         return {
             'yourDaysOfLive' : firstDaysOfLive,
-            'yourPhysical' : Math.round(physical * 100) + "% (" + physicalSign + ")",
-            'yourEmotional' : Math.round(emotional * 100) + "% (" + emotionalSign + ")",
-            'yourIntellectual' : Math.round(intellectual * 100) + "% (" + intellectualSign + ")",
-            'yourAverage' : Math.round( average * 100 ) + "% (" + averageSign + ")" ,
+            'yourPhysical' : Math.round(physical * 100) + "%",
+            'yourEmotional' : Math.round(emotional * 100) + "%",
+            'yourIntellectual' : Math.round(intellectual * 100) + "%",
+            'yourAverage' : Math.round( average * 100 ) + "%",
+
+            'physicalSign' :  physicalSign,
+            'emotionalSign' : emotionalSign,
+            'intellectualSign' : intellectualSign,
+            'averageSign' : averageSign,
+
             'diffDays' : diffDays,
-            'compatibilityPhysical' : compatibilityPhysical + "% ",
-            'compatibilityEmotional' : compatibilityEmotional + "% ",
-            'compatibilityIntellectual' : compatibilityIntellectual + "% ",
-            'compatibilityAverage' : Math.round((compatibilityPhysical + compatibilityEmotional + compatibilityIntellectual) / 3) + "% "
+            'compatibilityPhysical' : compatibilityPhysical + "%",
+            'compatibilityEmotional' : compatibilityEmotional + "%",
+            'compatibilityIntellectual' : compatibilityIntellectual + "%",
+            'compatibilityAverage' : Math.round((compatibilityPhysical + compatibilityEmotional + compatibilityIntellectual) / 3) + "%"
         }
     }
 

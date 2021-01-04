@@ -27,6 +27,17 @@ header a#logo_game span.cms{
 header a#logo_game span.rs{
     color: #ff5050;
 }
+
+.red_chart{
+  color: red;
+}
+.green_chart{
+  color: green;
+}
+.blue_chart{
+  color: blue;
+}
+
 h1#title{
     margin-top: 0px;
     margin-bottom: 0px;

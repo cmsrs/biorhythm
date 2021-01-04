@@ -1,10 +1,17 @@
 display = (function() {
 
+    //var conf;
+
     function initialize( conf ){
+        //conf = conf
         logic.init( conf );
         setup( conf );
         appendDateOptions();
         document.getElementById('submit').addEventListener("click",  clickSubmit, false);
+    }
+
+    function getArrow( sign ){
+        return '&nbsp;' + ( ( 0 < sign ) ? '&nearr;' : '&searr;');
     }
 
     function clickSubmit(e) {
@@ -24,37 +31,115 @@ display = (function() {
         var dataOut = logic.getResult(dataIn);
         //console.log(dataOut);
 
-        var result = document.getElementById('result');
-        result.innerHTML = '';
+        var resultGeneric = document.getElementById('resultGeneric');
+        resultGeneric.innerHTML = '';
 
-        for (const prop in dataOut) {
-            //var pocent = (( prop === 'yourDaysOfLive' ) || ( prop === 'diffDays' )) ? '' : '%';
-            var iDiv = document.createElement('div');
-            iDiv.id = prop;
-            iDiv.className = 'info';
-            iDiv.textContent = conf.text[conf.lang][prop] + ' : ' + dataOut[prop]; // + pocent;
-            result.appendChild(iDiv);
+        var resultBio = document.getElementById('resultBio');
+        resultBio.innerHTML = '';
 
-            if(prop === 'yourDaysOfLive'){
-                var descDiv1 = document.createElement('div');
-                descDiv1.className = 'info_bold';
-                descDiv1.textContent = conf.text[conf.lang].strYourBiorhythm;
-                result.appendChild(descDiv1);
-            }
-            if(prop === 'yourAverage'){
-                var descDiv2 = document.createElement('div');
-                descDiv2.className = 'info_bold';
-                descDiv2.textContent = conf.text[conf.lang].strCompatibility;
-                result.appendChild(descDiv2);
-            }
-        }
+        var resultCompatibility = document.getElementById('resultCompatibility');
+        resultCompatibility.innerHTML = '';
+
+        //generic
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['yourDaysOfLive'] + ' : ' + dataOut['yourDaysOfLive']; // + pocent;
+        resultGeneric.appendChild(iDiv);
+
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['diffDays'] + ' : ' + dataOut['diffDays']; // + pocent;
+        resultGeneric.appendChild(iDiv);
+
+        //bio
+        var descDiv1 = document.createElement('div');
+        descDiv1.className = 'info_bold';
+        descDiv1.textContent = conf.text[conf.lang].strYourBiorhythm;
+        resultBio.appendChild(descDiv1);
+
+        var iDivP = document.createElement('div');
+        iDivP.className = 'info';
+        iDivP.id = 'yourPhysical';
+        iDivP.textContent = conf.text[conf.lang]['yourPhysical'] + ' : ' + dataOut['yourPhysical']; // + pocent;
+
+        // 'physicalSign' :  physicalSign,
+        // 'emotionalSign' : emotionalSign,
+        // 'intellectualSign' : intellectualSign,
+        // 'averageSign' : averageSign,
+
+        var arrow = document.createElement('span');
+        arrow.className = 'green_chart';
+        arrow.innerHTML =  getArrow( dataOut['physicalSign'] );
+        iDivP.appendChild(arrow);
+
+        resultBio.appendChild(iDivP);
+
+
+
+        var iDivE = document.createElement('div');
+        iDivE.className = 'info';
+        iDivE.textContent = conf.text[conf.lang]['yourEmotional'] + ' : ' + dataOut['yourEmotional']; // + pocent;
+
+        var arrow = document.createElement('span');
+        arrow.className = 'red_chart';
+        arrow.innerHTML =  getArrow( dataOut['emotionalSign'] );
+        iDivE.appendChild(arrow);
+
+        resultBio.appendChild(iDivE);
+
+        var iDivI = document.createElement('div');
+        iDivI.className = 'info';
+        iDivI.textContent = conf.text[conf.lang]['yourIntellectual'] + ' : ' + dataOut['yourIntellectual']; // + pocent;
+
+        var arrow = document.createElement('span');
+        arrow.className = 'blue_chart';
+        arrow.innerHTML =  getArrow( dataOut['intellectualSign'] );
+        iDivI.appendChild(arrow);
+        resultBio.appendChild(iDivI);
+
+        var iDivA = document.createElement('div');
+        iDivA.className = 'info';
+        iDivA.textContent = conf.text[conf.lang]['yourAverage'] + ' : ' + dataOut['yourAverage']; // + pocent;
+        var arrow = document.createElement('span');
+        //arrow.className = 'blue_chart';
+        arrow.innerHTML =  getArrow( dataOut['averageSignSign'] );
+        iDivA.appendChild(arrow);
+
+        resultBio.appendChild(iDivA);
+
+        //compatibility
+        var descDiv2 = document.createElement('div');
+        descDiv2.className = 'info_bold';
+        descDiv2.textContent = conf.text[conf.lang].strCompatibility;
+        resultCompatibility.appendChild(descDiv2);
+
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['compatibilityPhysical'] + ' : ' + dataOut['compatibilityPhysical']; // + pocent;
+        resultCompatibility.appendChild(iDiv);
+
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['compatibilityEmotional'] + ' : ' + dataOut['compatibilityEmotional']; // + pocent;
+        resultCompatibility.appendChild(iDiv);
+
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['compatibilityIntellectual'] + ' : ' + dataOut['compatibilityIntellectual']; // + pocent;
+        resultCompatibility.appendChild(iDiv);
+
+        var iDiv = document.createElement('div');
+        iDiv.className = 'info';
+        iDiv.textContent = conf.text[conf.lang]['compatibilityAverage'] + ' : ' + dataOut['compatibilityAverage']; // + pocent;
+        resultCompatibility.appendChild(iDiv);
+
 
         var dataChart = logic.getDateToChart(dataIn);
         drawChart(dataChart);
     }
 
     function drawChart(dataChart) {
-        //console.log(dataChart);
+
         var dataE = [];
         var dataI = [];
         var dataP = [];
@@ -67,25 +152,25 @@ display = (function() {
           labels.push( dataChart[i].formatDate);
         }
 
-
         var config = {
     			type: 'line',
+          //type: 'scatter',
     			data: {
     				labels: labels,
     				datasets: [{
-    					label: 'Emotional',
+    					label: conf.text[conf.lang].yourEmotional,
     					backgroundColor: window.chartColors.red,
     					borderColor: window.chartColors.red,
     					data: dataE,
     					fill: false,
     				}, {
-    					label: 'Intellectual',
+    					label: conf.text[conf.lang].yourIntellectual,
     					backgroundColor: window.chartColors.blue,
     					borderColor: window.chartColors.blue,
     					data: dataI,
     					fill: false,
             }, {
-    					label: 'Physical',
+    					label: conf.text[conf.lang].yourPhysical,
     					backgroundColor: window.chartColors.green,
     					borderColor: window.chartColors.green,
     					data: dataP,
@@ -98,7 +183,7 @@ display = (function() {
     				plugins: {
     					title: {
     						display: true,
-    						text: 'Chart.js Line Chart'
+    						text: 'Biorytm Line Chart'
     					},
     					tooltip: {
     						mode: 'index',
@@ -128,8 +213,15 @@ display = (function() {
     			}
     		};
 
+        //window.onload = function() {
+        if( window.myLine ){
+            window.myLine.destroy();
+        }
+
         var ctx = document.getElementById('canvas').getContext('2d');
         window.myLine = new Chart(ctx, config);
+        window.myLine.update();
+        //};
 
     }
 
