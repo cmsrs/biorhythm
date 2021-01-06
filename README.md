@@ -4,13 +4,13 @@ A simple app to calculate the biorhythm and test partner compatibility.
 
 App includes:
 
-# calculates today biorhythm
+* calculates today biorhythm
 
-# calculates partner compatibility
+* calculates partner compatibility
 
-# draws biorhythm chart
+* draws biorhythm chart
 
-# ability configure many language
+* ability configure many language
 
 
 ```bash
