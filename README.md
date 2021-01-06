@@ -10,8 +10,9 @@ App includes:
 
 * draws biorhythm chart
 
-* ability configure many language
+* multi-language configuration 
 
+Install:
 
 ```bash
 git clone  https://github.com/cmsrs/biorhythm.git && cd biorhythm
