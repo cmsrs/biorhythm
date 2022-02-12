@@ -180,7 +180,7 @@ display = (function() {
     			},
     			options: {
     				maintainAspectRatio: false,
-                    aspectRatio: 1,
+	                    	//aspectRatio: 2,
     				responsive: true,
     				plugins: {
     					title: {
