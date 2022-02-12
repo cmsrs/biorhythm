@@ -179,6 +179,7 @@ display = (function() {
     				}]
     			},
     			options: {
+				maintainAspectRatio: false,
     				responsive: true,
     				plugins: {
     					title: {
