@@ -22,3 +22,8 @@ firefox ./index.html
 You can calculate biorhythm on the page:
 
 http://www.cmsrs.pl/en/cms/projects/biorhythm
+
+
+Install as Android app:
+
+https://play.google.com/store/apps/details?id=pl.cmsrs.biorhythm
